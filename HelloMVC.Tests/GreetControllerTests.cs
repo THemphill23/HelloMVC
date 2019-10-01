@@ -1,4 +1,5 @@
 ﻿using HelloMVC.Controllers;
+using HelloMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,16 @@ namespace HelloMVC.Tests
 
         Assert.IsType<ViewResult>(result);
 
+        }
+
+        [Fact]
+        public void Index_Passes_GreetingModel_To_View()
+        {
+            var controller = new GreetController();
+
+            var result = controller.Index("ThisIsAString");
+
+            Assert.IsType<GreetingModel>(result.Model);
         }
     }
 }
